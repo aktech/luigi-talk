@@ -4,6 +4,7 @@ import h5py
 import logging
 import pandas as pd
 import luigi
+import time
 
 from sklearn import datasets
 from sklearn import metrics
@@ -20,6 +21,7 @@ LABELS_H5_KEY = 'labels'
 class GetImagesDatasetTask(luigi.Task):
 
     def run(self):
+        time.sleep(2000)
         logging.info('Getting Dataset')
         digits = datasets.load_digits()
         images_and_labels_h5 = h5py.File(self.output().path, 'w')
